@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Boshqaruv Test Tizimi</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    .container {
+      background: white;
+      width: 100%;
+      max-width: 550px;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    h1 { font-size: 22px; color: #1a202c; text-align: center; margin-top: 0; margin-bottom: 5px; }
+    p.subtitle { color: #718096; text-align: center; margin-bottom: 25px; font-size: 14px; }
+    
+    .btn {
+      width: 100%;
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #2d3748;
+      cursor: pointer;
+      margin-bottom: 12px;
+      text-align: left;
+      transition: all 0.2s ease;
+      line-height: 1.4;
+    }
+    .btn:active { transform: scale(0.98); }
+    .cat-btn { text-align: center; font-weight: 600; color: #4a5568; font-size: 16px; }
+    .btn:hover:not(.disabled):not(.correct):not(.wrong) { border-color: #cbd5e0; background: #f7fafc; }
+    
+    .btn.correct { background: #c6f6d5 !important; border-color: #48bb78 !important; color: #22543d !important; pointer-events: none; }
+    .btn.wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a !important; pointer-events: none; }
+    .btn.disabled { opacity: 0.6; pointer-events: none; }
+    
+    .next-btn {
+      background: #3182ce; color: white; text-align: center; border: none; font-weight: 600; margin-top: 15px; padding: 16px; border-radius: 10px; font-size: 16px;
+    }
+    .next-btn:hover { background: #2b6cb0; }
+    
+    .header { 
+      display: flex; justify-content: space-between; align-items: center; 
+      font-size: 14px; color: #718096; margin-bottom: 20px; 
+      border-bottom: 2px solid #edf2f7; padding-bottom: 15px; 
+    }
+    .badge { background: #edf2f7; color: #4a5568; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 13px; }
+    
+    .question { font-size: 17px; font-weight: 600; margin-bottom: 25px; color: #1a202c; line-height: 1.5; }
+    .iq-image-placeholder { background: #edf2f7; border: 1px dashed #cbd5e0; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 15px; color: #718096; font-size: 14px; }
+    
+    .score-board { text-align: center; padding: 40px 0; background: #f7fafc; border-radius: 12px; margin-bottom: 20px; }
+    .score-board h2 { color: #3182ce; font-size: 48px; margin: 10px 0; }
+    .score-board p { color: #4a5568; font-size: 16px; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<div class="container" id="app"></div>
+
+<script>
+  const questionsData = {
+    "Davlat tili": [
+      {
+        q: "Ushbu qo‘shma gap qismlari o‘rtasida qaysi tinish belgisi qo‘llanadi? Jismimiz yo‘qolur // o‘chmas nomimiz.",
+        options: ["A) Tire ( - )", "B) Vergul ( , )", "C) Ikki nuqta ( : )", "D) Nuqtali vergul ( ; )"],
+        a: "A) Tire ( - )"
+      },
+      {
+        q: "Qaysi gapda qo‘shimcha qo‘llash bilan bog‘liq uslubiy xatolik mavjud?",
+        options: ["
